@@ -14,4 +14,8 @@ class MyImage {
 		this.ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
 		this.ctx.fillRect(0, 0, width, height);
 	}
+
+	addTo(parent) {
+		parent.appendChild(this.canvas);
+	}
 }
