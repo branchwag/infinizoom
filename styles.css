@@ -1,0 +1,9 @@
+body {
+	text-align: center;
+}
+
+.stage {
+	border: 2px solid;
+	width: 50%;
+	height: 50%;
+}
