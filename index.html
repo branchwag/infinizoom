@@ -7,9 +7,17 @@
   <body>
     <script src="myImage.js"></script>
     <script>
-    const img = new MyImage();
-    img.addTo(document.body);
-    img.addClass("stage");
+    const myImages = initializeImages(100);
+    myImages.forEach((img) => img.addTo(document.body));
+    myImages.forEach((img) => img.addClass("image-thumb"));
+
+    function initializeImages(num) {
+	const imgs = [];
+	for (let i = 0; i < num; i++) {
+	  imgs.push(new MyImage());
+      }
+    return imgs;
+    }
     </script>
   </body>
 </html>
