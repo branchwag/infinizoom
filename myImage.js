@@ -1,13 +1,23 @@
 class MyImage {
-	constructor(width = 1920, height = 1080) {
+	constructor(centerImg = null, width = 1920, height = 1080) {
 		this.canvas = document.createElement("canvas");
 		this.canvas.width = width;
 		this.canvas.height = height;
 		this.ctx = this.canvas.getContext("2d");
 
 		this.#drawRandomBackground();
+		if (centerImg) {
+			this.#drawCenterImage(centerImg);
+		}
 	}
 
+	#drawCenterImage(centerImg) {
+		const width = this.canvas.width / 3;
+		const height = this.canvas.height / 3;
+		const x = width;
+		const y = height;
+		this.ctx.drawImage(centerImg.canvas, x, y, width, height);
+	}
 	#drawRandomBackground() {
 		const { width, height } = this.canvas;
 		const hue = Math.random() * 360;
@@ -23,6 +33,10 @@ class MyImage {
 				this.ctx.fill();
 			}
 		}
+	}
+
+	draw(ctx) {
+		ctx.drawImage(this.canvas, 0, 0);
 	}
 
 	addTo(parent) {

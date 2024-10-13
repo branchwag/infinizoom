@@ -2,7 +2,7 @@ body {
 	text-align: center;
 }
 
-.stage {
+#stage {
 	border: 2px solid;
 	width: 50%;
 	height: 50%;
