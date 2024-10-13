@@ -7,7 +7,7 @@
   <body>
     <canvas id="stage" width="1920" height="1080"></canvas>
     <br>
-    <button onclick="zoom();">ZOOM</button>
+    <button id="zoomBtn" onclick="zoom();">ZOOM</button>
     <br>
     <script src="myImage.js"></script>
     <script>
@@ -19,9 +19,17 @@
     let offset = 0;
 
     function zoom() {
+      zoomBtn.disabled = true;
       const index = Math.floor(offset);
       const img = myImages[index];
-      img.draw(ctx);
+      const percent = offset - index;
+      const scaler = percent;
+      
+      const width = stage.width * scaler;
+      const height = stage.height * scaler;
+      const left = (stage.width - width) / 2;
+      const top = (stage.height - height) / 2;
+      img.draw(ctx, left, top, width, height);
 
       offset += 0.01;
 
@@ -29,6 +37,7 @@
 	requestAnimationFrame(zoom);
       } else {
 	  offset = 0;
+	  zoomBtn.disabled = false;
       }
 
     }

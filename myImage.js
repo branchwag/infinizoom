@@ -35,8 +35,8 @@ class MyImage {
 		}
 	}
 
-	draw(ctx) {
-		ctx.drawImage(this.canvas, 0, 0);
+	draw(ctx, left, top, width, height) {
+		ctx.drawImage(this.canvas, left, top, width, height);
 	}
 
 	addTo(parent) {
